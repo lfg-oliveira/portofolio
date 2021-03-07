@@ -9,7 +9,7 @@ use std::fs;
 fn portshell(argc:env::Args, strbuf: String) {
     println!("Cheque seu browser!");
     open("http://127.0.0.1:8000").expect("Não foi possível abrir o browser!");
-
+    
 }
 
 
@@ -25,17 +25,17 @@ async fn main()  -> std::io::Result<()> {
         }
         _ => {
             println!("Esse shell demonstrativo não aceita argumentos. Prosseguindo normalmente.
-Pressione qualquer teclas para continuar.");
+            Pressione qualquer teclas para continuar.");
             io::stdin().read_line(&mut buf).unwrap();
             portshell(_argv,buf);
         }
     }
+    
     HttpServer::new(|| {
         App::new()
-        .service(Files::new("/", "static/").index_file("index.html"))
+        .service(Files::new("/", "static/").index_file("index.html").prefer_utf8(true))
     })
     .bind("127.0.0.1:8000")?
     .run()
     .await
-
 }

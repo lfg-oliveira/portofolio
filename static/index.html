@@ -7,99 +7,188 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="style.css">
+    <script src="jquery.js"></script>
     <title>PotfólioCriat</title>
 </head>
 
 <body>
     <header>
-        <div class="menuToggle">
-            <span class="barras"></span>
-            <span class="barras"></span>
-            <span class="barras"></span>
-        </div>
-
         <div class="logo">
             <h1>Basic Coders</h1>
         </div>
     </header>
     <article>
-        <div class="listMenu">
-            <ul>
-                <li class="listDecora">HelloWord</li>
-                <li class="listDecora">Júnior</li>
-                <li class="listDecora">Pleno</li>
-                <li class="listDecora">Senior</li>
-            </ul>
-        </div>
+        <ul>
+            <span></span>
+            <li class="listDecora"><a href="#helloword">Hello World</a></li>
+            <li class="listDecora"><a href="#junior">Júnior</a></li>
+            <li class="listDecora"><a href="#pleno">Pleno</a></li>
+            <li class="listDecora"><a href="#senior">Senior</a></li>
+        </ul>
     </article>
-    <section class="helloWord">
+    <section class="helloWord" id="helloword">
         <div class="divTexts">
             <h1>O início de tudo...</h1>
-            <p class="console">print("Hello World!")</p>
+            <div class="console">
+                <p>print("Hello World!")</p>
+            </div>
         </div>
         <button onclick="showJunior()" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
     </section>
-    <section class="junior">
+    <section class="junior" id="junior">
         <h1 class="data">Ah 10 anos atrás...</h1>
         <div class="container">
             <div class="divImg">
                 <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
             </div>
             <div class="conhecimentos">
-                <h1>Conhecimentos</h1>
+                <h2>Conhecimentos</h2>
                 <ul>
                     <li>HTML</li>
                     <li>CSS</li>
                     <li>JavaScript</li>
                 </ul>
+                <h3>Projetos</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nisi assumenda iure officia natus
                     suscipit! Ab voluptate eligendi cupiditate ullam. Neque laboriosam aut quia blanditiis beatae
                     quisquam? Quis, sint sit.</p>
             </div>
         </div>
     </section>
-    <section class="pleno">
-
+    <section class="pleno" id="pleno">
+        <h1 class="data">Ah 5 anos atrás...</h1>
+        <div class="container">
+            <div class="divImg">
+                <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
+            </div>
+            <div class="conhecimentos">
+                <h2>Conhecimentos</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Desing</li>
+                    <li>Front End</li>
+                    <li>Back End</li>
+                    <li>NodeJs</li>
+                    <li>React</li>
+                </ul>
+                <h3>Projetos</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nisi assumenda iure officia natus
+                    suscipit! Ab voluptate eligendi cupiditate ullam. Neque laboriosam aut quia blanditiis beatae
+                    quisquam? Quis, sint sit.</p>
+            </div>
+        </div>
     </section>
-
+    
+    <section class="senior" >
+        <h1 class="data" id="senior">Atualmente</h1>
+        <div class="container">
+            <div class="divImg">
+                <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
+            </div>
+            <div class="conhecimentos">
+                <h2>Conhecimentos</h2>
+                <ul>
+                    <li>Full Stack</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Desing</li>
+                    <li>Front End</li>
+                    <li>Back End</li>
+                    <li>NodeJs</li>
+                    <li>React</li>
+                    <li>Back End</li>
+                    <li>Python</li>
+                    <li>Ruby</li>
+                    <li>Banco de Dados Relacionais</li>
+                    <li>Banco de Dados Não Relacionais</li>
+                </ul>
+                <h3>Projetos</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nisi assumenda iure officia natus
+                    suscipit! Ab voluptate eligendi cupiditate ullam. Neque laboriosam aut quia blanditiis beatae
+                    quisquam? Quis, sint sit.</p>
+            </div>
+        </div>
+    </section>
+    
 
 
     <script>
         const isActive = document.querySelector('.listMenu')
         const lista = document.querySelectorAll('.listDecora')
-        const menu = document.querySelector('.menuToggle')
-        // const article = document.querySelector('article')
-        menu.addEventListener('click', () => {
-            isActive.classList.toggle('Ola')
-            if (isActive.classList.contains('Ola')) {
-                lista.forEach(e => {
-                    e.style.opacity = 1
-                    e.style.width = '100px'
-                });
-                // article.style.left = 0
-            } else {
-                lista.forEach(e => {
-                    e.style.opacity = 0
-                    e.style.width = 0
-                });
-                // article.style.left = '-230px'
-            }
+        $('article ul li a').click(function (e) {
+            e.preventDefault();
+            let id = $(this).attr('href'),
+                targetOffset = $(id).offset().top;
+            $('html, body').animate({
+                scrollTop: targetOffset
+            }, 500);
+            $(this).before
+            document.querySelector('.junior .container').style.marginLeft = '30px'
+            document.querySelector('.junior .container').style.opacity = '1'
         })
 
         function showJunior() {
-            document.querySelector('.junior').style.opacity = 1
-
+            let targetOffset = $('.junior').offset().top;
+            $('html, body').animate({
+                scrollTop: targetOffset
+            }, 500);
+            document.querySelector('.junior .container').style.marginLeft = '30px'
+            document.querySelector('.junior .container').style.opacity = '1'
         }
-        window.addEventListener('scroll', function (ev) {
-            
-            
+
+        window.addEventListener('scroll', function () {
+
+            const timeLine = document.querySelector('article ul span')
+
             if (window.scrollY > 200) {
                 document.querySelector(".junior").style.opacity = "1";
+                document.querySelector('.junior .container').style.marginLeft = '30px'
+                document.querySelector('.junior .container').style.opacity = '1'
+
+            } else {
+                document.querySelector(".junior").style.opacity = "1";
+                document.querySelector('.junior .container').style.marginLeft = '-500px'
+                document.querySelector('.junior .container').style.opacity = '0'
+            }
+
+            if (window.scrollY > 950) {
+                document.querySelector('.pleno .container').style.opacity = '1'
                 
             } else {
-                document.querySelector(".junior").style.opacity = "0";
+                document.querySelector('.pleno .container').style.opacity = '0'
+                
             }
+
+            if (window.scrollY > 1600) {
+                document.querySelector('.senior .container').style.opacity = '1'
+                document.querySelector('.senior .container').style.marginRight = '0px'
+                
+            } else {
+                document.querySelector('.senior .container').style.marginRight = '-2500px'
+                document.querySelector('.senior .container').style.opacity = '0'
+                
+            }
+
+            //TimeLine
+            if (window.scrollY < 600 ) {
+                timeLine.style.height = '25%'
+            } else if (window.scrollY > 600 && window.scrollY < 1199) {
+                timeLine.style.height = '50%'
+            } else if (window.scrollY > 1100 && window.scrollY < 1600) {
+                timeLine.style.height = '75%'
+            } else {
+                timeLine.style.height = '100%'
+            }
+        })
+
+        $(document).ready(function () {
+            document.querySelector('.helloWord .console p').style.width = '142px'
         });
+        
+        
     </script>
 </body>
 

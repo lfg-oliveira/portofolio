@@ -8,26 +8,93 @@
 }
 
 
+
+
 header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #e1e1e1;
+    background: #f1f1f1;
     border-bottom: 2px solid #a1a1a1;
 }
- article {
-     /* width: 200px;
-     background: #ffffff;
-     height: 100vh;
-     box-shadow: 1px 1px 10px #aaa;
-     position: relative;
-     border-radius: 0 10px 0 0;
-     left: -230px;
-     transition: 0.4s ease-out; */
-     position: absolute;
- }
 
- .logo {
+article {
+    display: flex;
+    position: fixed;
+    left: 2%;
+    top: 35%;
+    z-index: 1000;
+ }
+ 
+ article ul{
+     opacity: 0.3;
+     transition: 0.3s;
+ }
+ article:hover ul {
+    opacity: 1;
+}
+ article ul span{
+     height: 25%;
+     width: 2px;
+     background: rgb(255, 255, 255);
+     position: absolute;
+     right: -27%;
+     transition: 0.5s ease-out;
+     border-radius: 50px;
+     box-shadow: 5px 1px 5px rgba(0, 0, 0, 0.342);
+ }
+ 
+ article ul li{
+     text-align: start;
+     list-style: none;
+     margin: 40px 0;
+     font-family: 'Damion';
+     position: relative;
+ }
+ article ul li a{
+     text-decoration: none;
+     position: relative;
+     color: black;
+     transition: 0.4s;
+ }
+ 
+ article ul li a::before{
+     content: '';
+     width: 0;
+     height: .9px;
+     background: rgb(77, 77, 77);
+     position: absolute;
+     bottom: 3px;
+     transition: 0.5s;
+ }
+ article ul li a:hover::before{
+     
+     width: 100%;
+     
+ }
+ article ul li::before{
+     content: '';
+     width: 0;
+     height: .5px;
+     background: white;
+     position: absolute;
+     bottom: 0;
+ }
+ article ul li::after{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    top: 35%;
+    right: -31%;
+}
+
+
+
+
+.logo {
      width: 100%;
      text-align: center;
      font-family: 'Krona One';
@@ -47,54 +114,9 @@ header{
     margin: 3px 0;
 }
 
-.listDecora{
-    text-align: center;
-}
-
-.listMenu ul{
-    left: 10px;
-    top: 40px;
-    position: relative;
-}
-.listMenu ul li:nth-child(1){
-    left: 0px;
-    top: -26px;
-    transition-delay: 0s;
-    position: absolute;
-}
-.listMenu ul li:nth-child(2){
-    left: 20px;
-    top: 4px;
-    transition-delay: 0.6s;
-    position: absolute;
-}
-.listMenu ul li:nth-child(3){
-    left: 40px;
-    top: 35px;
-    transition-delay: 1.2s;
-    position: absolute;
-}
-.listMenu ul li:nth-child(4){
-    left: 65px;
-    top: 65px;
-    transition-delay: 1.8s;
-    position: absolute;
-}
 
 
-.listMenu ul li {
-    list-style: none;
-    margin: 10px 0;
-    background: linear-gradient(to right, #c5c5c5, white);
-    color: rgb(75, 75, 75);
-    padding: 5px 10px;
-    width: 0;
-    opacity: 0;
-    transition: 0.3s;
-    z-index: 1000;
-    font-weight: 600;
-    border-radius: 0 15px 0 15px;
-}
+
 .divTexts {
     width: 60vw;
     display: flex;
@@ -104,7 +126,7 @@ header{
 
 .helloWord{
     width: 100%;
-    background: #c1c1c1;
+    background: #f1f1f1;
     display: flex;
     height: 100vh;
     justify-content: center;
@@ -126,8 +148,28 @@ header{
     padding: 20px;
     border-radius: 20px;
     width: 60%;
+    min-width: 250px;
     margin: 20px 0;
 }
+.helloWord .console p {
+    width: 0;
+    margin-left: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: 1.5s steps(60);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    animation: bord 850ms infinite normal 
+}
+
+@keyframes bord{
+    from {
+        border-right-color:rgba(255, 255, 255, 0.5);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
 
 .continue {
     border: none;
@@ -144,7 +186,8 @@ header{
     justify-content: center;
     align-items: center;
     box-shadow: 1px 1px 10px #a1a1a1;
-    border-radius: 5px;
+    border-radius: 40px;
+    outline: none;
 }
 
 .continue i {
@@ -163,23 +206,25 @@ header{
 .junior{
     width: 100%;
     height: 600px;
-    background: #a1a1a1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background: #f1f1f1;
     transition: 0.7s;
-    opacity: 0;
+    opacity: 1;
+    transition: 0.5s;
+    display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
 .junior h1 {
-    margin: 30px 0;
+    margin-bottom: 30px;
     font-size: 40px;
     letter-spacing: 2px;
     font-family: 'Damion';
     position: relative;
-    
+    display: flex;
+    justify-self: center;
+    align-self: center;
 }
 
 .junior .data::before{
@@ -197,11 +242,14 @@ header{
 
 .junior .container{
     width: 80%;
-    min-width: 850px;
+    margin-left: -1000px;
     display: flex;
+    overflow: hidden;
     background: linear-gradient(to right, #c5c5c5, white);
     padding: 20px;
     border-radius: 10px;
+    transition: 0.7s ease-in-out;
+    opacity: 0;
     box-shadow: 2px 2px 10px rgb(117, 117, 117);
 }
 .junior .container .divImg{
@@ -221,14 +269,29 @@ header{
     width: 100%;
     flex-direction: column;
 }
-.junior .container .conhecimentos h1{
-    text-align: center;
-    margin: 15px 0;
+.junior .container .conhecimentos h2{
+    margin: 0 25px;
+    border-left: 1px solid black;
     padding: 10px;
-    background: white;
-    font-weight: 100;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-weight: 500;
     font-family: 'Damion';
     letter-spacing: 10px;
+    font-size: 25px;
+}
+.junior .container .conhecimentos h3{
+    text-align: center;
+    margin: 0 25px;
+    border-left: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: 'Damion';
+    letter-spacing: 3px;
+    justify-self: flex-start;
+    align-self: flex-start;
+
 }
 .junior .container .conhecimentos ul{
     display: flex;
@@ -237,19 +300,244 @@ header{
 .junior .container .conhecimentos p{
     width: 75%;
     padding: 10px 30px;
+    border-radius: 15px;
     font-family: 'Roboto';
-    background: white;
 }
 
 .junior .container .conhecimentos ul li{
-    margin: 10px 20px;
-    list-style: none;
-    background: #fff;
+    margin: 10px 40px;
+    list-style: outside;
     border-radius: 0 30px 0 30px;
     font-weight: 900;
-    height: 20px;
     color: #333;
-    width: 120px;
+    font-family: 'Damion';
+    letter-spacing: 2px;
+    text-align: center;
+}
+/* Pleno */
+.pleno{
+    width: 100%;
+    height: 600px;
+    background: #f1f1f1;
+    transition: 0.7s;
+    opacity: 1;
+    transition: 0.5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.pleno h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-family: 'Damion';
+    position: relative;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.pleno .data::before{
+    content: '';
+    width: 0;
+    bottom: 5px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    position: absolute;
+    transition: 0.5s;
+}
+.pleno .data:hover::before{
+    width: 100%;
+}
+
+.pleno .container{
+    width: 80%;
+    margin-left: 30px;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(to right, #c5c5c5, white);
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.7s ease-in-out;
+    opacity: 0;
+    box-shadow: 2px 2px 10px rgb(117, 117, 117);
+}
+.pleno .container .divImg{
+    width: 50%;
+}
+
+.pleno .container .divImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+.pleno .container .conhecimentos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.pleno .container .conhecimentos h2{
+    margin: 0 25px;
+    border-left: 1px solid black;
+    padding: 10px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-weight: 500;
+    font-family: 'Damion';
+    letter-spacing: 10px;
+    font-size: 25px;
+}
+.pleno .container .conhecimentos h3{
+    text-align: center;
+    margin: 0 25px;
+    border-left: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: 'Damion';
+    letter-spacing: 3px;
+    justify-self: flex-start;
+    align-self: flex-start;
+
+}
+.pleno .container .conhecimentos ul{
+    display: flex;
+    margin: 60px 0;
+    flex-wrap: wrap;
+}
+.pleno .container .conhecimentos p{
+    width: 75%;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-family: 'Roboto';
+}
+
+.pleno .container .conhecimentos ul li{
+    margin: 10px 40px;
+    list-style: outside;
+    border-radius: 0 30px 0 30px;
+    font-weight: 900;
+    color: #333;
+    font-family: 'Damion';
+    letter-spacing: 2px;
+    text-align: center;
+}
+/* Senior */
+.senior{
+    width: 100%;
+    height: 800px;
+    overflow: hidden;
+    background: #f1f1f1;
+    transition: 0.7s;
+    opacity: 1;
+    transition: 0.5s;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.senior h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    letter-spacing: 2px;
+    font-family: 'Damion';
+    position: relative;
+    display: flex;
+    justify-self: center;
+    align-self: center;
+}
+
+.senior .data::before{
+    content: '';
+    width: 0;
+    bottom: 5px;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    position: absolute;
+    transition: 0.5s;
+}
+.senior .data:hover::before{
+    width: 100%;
+}
+
+.senior .container{
+    width: 80%;
+    margin-right: -2500px;
+    display: flex;
+    overflow: hidden;
+    background: linear-gradient(to right, #c5c5c5, white);
+    padding: 20px;
+    border-radius: 10px;
+    transition: 0.7s ease-in-out;
+    opacity: 1;
+    box-shadow: 2px 2px 10px rgb(117, 117, 117);
+}
+.senior .container .divImg{
+    width: 50%;
+}
+
+.senior .container .divImg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+.senior .container .conhecimentos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+.senior .container .conhecimentos h2{
+    margin: 0 25px;
+    border-left: 1px solid black;
+    padding: 10px;
+    justify-self: flex-start;
+    align-self: flex-start;
+    font-weight: 500;
+    font-family: 'Damion';
+    letter-spacing: 10px;
+    font-size: 25px;
+}
+.senior .container .conhecimentos h3{
+    text-align: center;
+    margin: 0 25px;
+    border-left: 1px solid black;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 100;
+    font-family: 'Damion';
+    letter-spacing: 3px;
+    justify-self: flex-start;
+    align-self: flex-start;
+
+}
+.senior .container .conhecimentos ul{
+    display: flex;
+    margin: 60px 0;
+    flex-wrap: wrap;
+}
+.senior .container .conhecimentos p{
+    width: 75%;
+    padding: 10px 30px;
+    border-radius: 15px;
+    font-family: 'Roboto';
+}
+
+.senior .container .conhecimentos ul li{
+    margin: 10px 40px;
+    list-style: outside;
+    border-radius: 0 30px 0 30px;
+    font-weight: 900;
+    color: #333;
     font-family: 'Damion';
     letter-spacing: 2px;
     text-align: center;
@@ -265,16 +553,58 @@ header{
         min-width: 90%;
         justify-content: center;
         align-items: center;
-        margin: 50px 0;
+        margin-right: 30px;
     }
     .junior .container .conhecimentos ul {
         flex-direction: column;
     }
-    .junior .container .conhecimentos h1{
+    .junior .container .conhecimentos h2{
         font-size: 20px;
+        margin-left: 0;
     }
     .container .divImg img {
         width: 150px;
         height: 150px;
+    }
+
+    /* Pleno */
+
+    .pleno{
+        height: 1500px;
+    }
+    .pleno .container{
+        flex-direction: column;
+        width: 90%;
+        min-width: 90%;
+        justify-content: center;
+        align-items: center;
+        margin: 50px 0;
+    }
+    .pleno .container .conhecimentos ul {
+        flex-direction: column;
+    }
+    .pleno .container .conhecimentos h2{
+        font-size: 20px;
+        margin-left: 0;
+    }
+    /* Senior */
+    .senior{
+        height: 1500px;
+    }
+    .senior .container{
+        flex-direction: column;
+        width: 100%;
+        min-width: 90%;
+        padding: 20px;
+        justify-content: center;
+        align-items: center;
+        margin: 50px 0;
+    }
+    .senior .container .conhecimentos ul {
+        flex-direction: column;
+    }
+    .senior .container .conhecimentos h2{
+        font-size: 20px;
+        margin-left: 0;
     }
 }

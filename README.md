@@ -1,4 +1,4 @@
-# Portofólio
+# Portofólio Criativo
 Projeto da equipe Basic Coders que irá para o primeiro campeonato da Rafaella Ballerini.
 
 Para compilar o projeto é necessario ter a linguagem Rust instalada no sistema.

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>PotfólioCriat</title>
+</head>
+
+<body>
+    <header>
+        <div class="menuToggle">
+            <span class="barras"></span>
+            <span class="barras"></span>
+            <span class="barras"></span>
+        </div>
+
+        <div class="logo">
+            <h1>Basic Coders</h1>
+        </div>
+    </header>
+    <article>
+        <div class="listMenu">
+            <ul>
+                <li class="listDecora">HelloWord</li>
+                <li class="listDecora">Júnior</li>
+                <li class="listDecora">Pleno</li>
+                <li class="listDecora">Senior</li>
+            </ul>
+        </div>
+    </article>
+    <section class="helloWord">
+        <div class="divTexts">
+            <h1>O início de tudo...</h1>
+            <p class="console">print("Hello World!")</p>
+        </div>
+        <button onclick="showJunior()" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
+    </section>
+    <section class="junior">
+        <h1 class="data">Ah 10 anos atrás...</h1>
+        <div class="container">
+            <div class="divImg">
+                <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
+            </div>
+            <div class="conhecimentos">
+                <h1>Conhecimentos</h1>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nisi assumenda iure officia natus
+                    suscipit! Ab voluptate eligendi cupiditate ullam. Neque laboriosam aut quia blanditiis beatae
+                    quisquam? Quis, sint sit.</p>
+            </div>
+        </div>
+    </section>
+    <section class="pleno">
+
+    </section>
+
+
+
+    <script>
+        const isActive = document.querySelector('.listMenu')
+        const lista = document.querySelectorAll('.listDecora')
+        const menu = document.querySelector('.menuToggle')
+        // const article = document.querySelector('article')
+        menu.addEventListener('click', () => {
+            isActive.classList.toggle('Ola')
+            if (isActive.classList.contains('Ola')) {
+                lista.forEach(e => {
+                    e.style.opacity = 1
+                    e.style.width = '100px'
+                });
+                // article.style.left = 0
+            } else {
+                lista.forEach(e => {
+                    e.style.opacity = 0
+                    e.style.width = 0
+                });
+                // article.style.left = '-230px'
+            }
+        })
+
+        function showJunior() {
+            document.querySelector('.junior').style.opacity = 1
+
+        }
+        window.addEventListener('scroll', function (ev) {
+            
+            
+            if (window.scrollY > 200) {
+                document.querySelector(".junior").style.opacity = "1";
+                
+            } else {
+                document.querySelector(".junior").style.opacity = "0";
+            }
+        });
+    </script>
+</body>
+
+</html>

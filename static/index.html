@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
     <link rel="stylesheet" href="style.css">
-    <script src="jquery.js"></script>
+    <script src="./jquery.js"></script>
     <title>PotfólioCriat</title>
 </head>
 
@@ -20,23 +20,23 @@
     <article>
         <ul>
             <span></span>
-            <li class="listDecora"><a href="#helloword">Hello World</a></li>
+            <li class="listDecora"><a href="#helloworld">Hello World</a></li>
             <li class="listDecora"><a href="#junior">Júnior</a></li>
             <li class="listDecora"><a href="#pleno">Pleno</a></li>
             <li class="listDecora"><a href="#senior">Senior</a></li>
         </ul>
     </article>
-    <section class="helloWord" id="helloword">
+    <section class="helloWord" id="helloworld">
         <div class="divTexts">
             <h1>O início de tudo...</h1>
             <div class="console">
                 <p>print("Hello World!")</p>
             </div>
         </div>
-        <button onclick="showJunior()" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
+        <button onclick="showJunior('.junior')" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
     </section>
     <section class="junior" id="junior">
-        <h1 class="data">Ah 10 anos atrás...</h1>
+        <h1 class="data">Há 10 anos atrás...</h1>
         <div class="container">
             <div class="divImg">
                 <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
@@ -48,15 +48,16 @@
                     <li>CSS</li>
                     <li>JavaScript</li>
                 </ul>
-                <h3>Projetos</h3>
+                <h3 class="projetos">Projetos</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente nisi assumenda iure officia natus
                     suscipit! Ab voluptate eligendi cupiditate ullam. Neque laboriosam aut quia blanditiis beatae
                     quisquam? Quis, sint sit.</p>
             </div>
         </div>
+        <button onclick="showJunior('.pleno')" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
     </section>
     <section class="pleno" id="pleno">
-        <h1 class="data">Ah 5 anos atrás...</h1>
+        <h1 class="data">Há 5 anos atrás...</h1>
         <div class="container">
             <div class="divImg">
                 <img src="https://cdn.pixabay.com/photo/2015/09/09/16/17/mountain-lake-931726_960_720.jpg">
@@ -79,6 +80,7 @@
                     quisquam? Quis, sint sit.</p>
             </div>
         </div>
+        <button onclick="showJunior('.senior')" class="continue">Continue <i class="fas fa-arrow-circle-down"></i></button>
     </section>
     
     <section class="senior" >
@@ -118,6 +120,7 @@
     <script>
         const isActive = document.querySelector('.listMenu')
         const lista = document.querySelectorAll('.listDecora')
+        const offset = $(window).height() * 3/4
         $('article ul li a').click(function (e) {
             e.preventDefault();
             let id = $(this).attr('href'),
@@ -130,21 +133,19 @@
             document.querySelector('.junior .container').style.opacity = '1'
         })
 
-        function showJunior() {
-            let targetOffset = $('.junior').offset().top;
+        function showJunior(div) {
+            let targetOffset = $(div).offset().top;
             $('html, body').animate({
                 scrollTop: targetOffset
             }, 500);
-            document.querySelector('.junior .container').style.marginLeft = '30px'
-            document.querySelector('.junior .container').style.opacity = '1'
         }
 
         window.addEventListener('scroll', function () {
-
+            console.log($('.pleno').offset().top)
             const timeLine = document.querySelector('article ul span')
 
-            if (window.scrollY > 200) {
-                document.querySelector(".junior").style.opacity = "1";
+            if (window.scrollY > $('.junior').offset().top - 300) {
+                
                 document.querySelector('.junior .container').style.marginLeft = '30px'
                 document.querySelector('.junior .container').style.opacity = '1'
 
@@ -154,7 +155,7 @@
                 document.querySelector('.junior .container').style.opacity = '0'
             }
 
-            if (window.scrollY > 950) {
+            if (window.scrollY > $('.pleno').offset().top - 300) {
                 document.querySelector('.pleno .container').style.opacity = '1'
                 
             } else {
@@ -162,7 +163,7 @@
                 
             }
 
-            if (window.scrollY > 1600) {
+            if (window.scrollY > $('.senior').offset().top - 300) {
                 document.querySelector('.senior .container').style.opacity = '1'
                 document.querySelector('.senior .container').style.marginRight = '0px'
                 
@@ -173,14 +174,14 @@
             }
 
             //TimeLine
-            if (window.scrollY < 600 ) {
-                timeLine.style.height = '25%'
-            } else if (window.scrollY > 600 && window.scrollY < 1199) {
-                timeLine.style.height = '50%'
-            } else if (window.scrollY > 1100 && window.scrollY < 1600) {
-                timeLine.style.height = '75%'
-            } else {
+            if (window.scrollY > $('.senior').offset().top - 300 ) {
                 timeLine.style.height = '100%'
+            } else if (window.scrollY > $('.pleno').offset().top - 300) {
+                timeLine.style.height = '75%'
+            } else if (window.scrollY > $('.junior').offset().top - 300) {
+                timeLine.style.height = '50%'
+            } else {
+                timeLine.style.height = '25%'
             }
         })
 
@@ -188,6 +189,12 @@
             document.querySelector('.helloWord .console p').style.width = '142px'
         });
         
+        
+        document.querySelectorAll('.container').forEach((e) => {
+            e.addEventListener('click', () => {
+                e.classList.toggle('d3')
+            })
+        })
         
     </script>
 </body>

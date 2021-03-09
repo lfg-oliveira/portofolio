@@ -6,6 +6,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+section {
+    position: relative;
+    padding: 440px 0;
+}
 
 
 
@@ -22,7 +26,7 @@ article {
     display: flex;
     position: fixed;
     left: 2%;
-    top: 35%;
+    top: 25%;
     z-index: 1000;
  }
  
@@ -88,33 +92,24 @@ article {
     border-radius: 50%;
     background: white;
     top: 35%;
-    right: -31%;
+    right: -31.3%;
 }
 
+.d3{
+    transform: rotate3d(.01, 1, 0, 180deg);
+}
 
-
+.container{
+    cursor: pointer;
+    min-height: 500px;
+    margin-bottom: 100px;
+}
 
 .logo {
      width: 100%;
      text-align: center;
      font-family: 'Krona One';
  }
-
-.menuToggle{
-    display: flex;
-    flex-direction: column;
-    cursor:pointer;
-    padding: 0 10px;
-}
-
-.menuToggle span {
-    width: 20px;
-    height: 2px;
-    background-color: black;
-    margin: 3px 0;
-}
-
-
 
 
 .divTexts {
@@ -175,8 +170,8 @@ article {
     border: none;
     padding: 20px 50px ;
     font-size: 20px;
-    position: absolute;
-    bottom: 15px;
+    position: relative;
+    bottom: 0;
     letter-spacing: 2px;
     z-index: 500;
     background: transparent;
@@ -188,6 +183,7 @@ article {
     box-shadow: 1px 1px 10px #a1a1a1;
     border-radius: 40px;
     outline: none;
+    margin: 30px 0;
 }
 
 .continue i {
@@ -252,6 +248,7 @@ article {
     opacity: 0;
     box-shadow: 2px 2px 10px rgb(117, 117, 117);
 }
+
 .junior .container .divImg{
     width: 50%;
 }

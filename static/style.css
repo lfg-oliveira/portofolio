@@ -147,3 +147,22 @@ figure.back3{
     background: rgb(255, 255, 255);
     transform: rotateY(180deg);
 }
+
+@media (max-width:900px){
+
+    .btnBack{
+        top: 0;
+        left: 50%;
+    }
+    .btnNext{
+        bottom: 0;
+        left: 50%;
+        top: auto;
+    }
+
+    .container{
+        left: 100%;
+    }
+
+    
+}
